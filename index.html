@@ -24,6 +24,15 @@
       color: white;
       padding: 20px;
     }
+    .sidebar h2, .content h2 {
+      cursor: pointer;
+      padding-bottom: 5px;
+      margin-top: 20px;
+      border-bottom: 1px solid #ccc;
+    }
+    .section {
+      display: none;
+    }
     .profile-photo {
       display: flex;
       justify-content: center;
@@ -50,9 +59,6 @@
       margin-top: 5px;
       color: #555;
     }
-    section {
-      margin-top: 30px;
-    }
     input, select {
       display: block;
       width: 100%;
@@ -71,26 +77,6 @@
     button:hover {
       background-color: #094266;
     }
-    .collapsible {
-      background-color: #0b3d5c;
-      color: white;
-      padding: 10px;
-      text-align: left;
-      cursor: pointer;
-      width: 100%;
-      border: none;
-      outline: none;
-      font-size: 16px;
-    }
-    .active, .collapsible:hover {
-      background-color: #094266;
-    }
-    .content-section {
-      padding: 10px;
-      display: none;
-      overflow: hidden;
-      background-color: #f1f1f1;
-    }
   </style>
 </head>
 <body>
@@ -100,55 +86,33 @@
         <img src="https://img.freepik.com/premium-photo/portrait-beautiful-young-woman-with-curly-hair_847439-4472.jpg" alt="Profile Photo">
       </div>
 
-      <h2>CONTACT</h2>
-      <ul class="contact">
+      <h2 onclick="toggleSection('contact-list')">CONTACT</h2>
+      <ul class="contact section" id="contact-list">
         <li>📞 +094 555 55 55</li>
         <li>✉️ esmerseyidova11@gmail.com</li>
         <li>🌐 www.esy.com</li>
         <li>📍 Baku ,Azerbaijan</li>
       </ul>
 
-      <button class="collapsible">EDUCATION</button>
-      <div class="content-section" id="education-list">
+      <h2 onclick="toggleSection('education-list')">EDUCATION</h2>
+      <div class="section" id="education-list">
         <p><strong>2024 – 2028</strong><br />Azerbaijan Technical University</p>
         <p><strong>2029 – 2033</strong><br />Business University</p>
-        <button onclick="addDropdown('education-list', 'Education')">Add Education</button>
       </div>
+      <button onclick="addDropdown('education-list', 'Education')">Add Education</button>
 
-      <button class="collapsible">SKILLS</button>
-      <div class="content-section" id="skills-list">
-        <ul>
-          <li>Design</li>
-          <li>Public Relations</li>
-          <li>Teamwork</li>
-          <li>Communication</li>
-          <li>Critical Thinking</li>
-        </ul>
-        <button onclick="addDropdown('skills-list', 'Skill')">Add Skill</button>
-      </div>
+      <h2 onclick="toggleSection('skills-list')">SKILLS</h2>
+      <ul class="skills section" id="skills-list">
+        <li>Design</li>
+        <li>Public Relations</li>
+        <li>Teamwork</li>
+        <li>Communication</li>
+        <li>Critical Thinking</li>
+      </ul>
+      <button onclick="addDropdown('skills-list', 'Skill')">Add Skill</button>
 
-      <button class="collapsible">WORK EXPERIENCE</button>
-      <div class="content-section" id="work-list">
-        <div class="job">
-          <h4>Intern - Web Design Assistant – DESIGNER & Specialist <span>2025 – Present</span></h4>
-          <ul>
-            <li>Created mockups and prototypes for various projects.</li>
-            <li>Collaborated with senior designers to optimize website layouts.</li>
-            <li>Worked on SEO principles to improve rankings.</li>
-          </ul>
-        </div>
-        <div class="job">
-          <h4>Azercell – Freelance Web Designer <span>2026 – 2027</span></h4>
-          <ul>
-            <li>Designed responsive websites for local businesses.</li>
-            <li>Integrated e-commerce platforms and optimized for mobile.</li>
-          </ul>
-        </div>
-        <button onclick="addDropdown('work-list', 'Work')">Add Work</button>
-      </div>
-
-      <h2>LANGUAGES</h2>
-      <ul class="skills">
+      <h2 onclick="toggleSection('languages-list')">LANGUAGES</h2>
+      <ul class="skills section" id="languages-list">
         <li>English (Fluent)</li>
         <li>Turkish (Advanced)</li>
       </ul>
@@ -159,39 +123,53 @@
       <h3>WEB-DESIGNER</h3>
 
       <section>
-        <h2>PROFILE</h2>
-        <p>As a fresh university graduate with a degree in Web Development and Design, I am enthusiastic about merging creativity with technology to produce impactful web solutions. My academic journey has equipped me with the technical expertise and artistic insight necessary to craft engaging digital experiences. With hands-on experience as an intern and freelance projects under my belt, I thrive on challenges and am eager to collaborate with dynamic teams. Outside of my professional pursuits, I am inspired by modern art and enjoy exploring the interplay between aesthetics and functionality in digital spaces.</p>
+        <h2 onclick="toggleSection('profile-section')">PROFILE</h2>
+        <p class="section" id="profile-section">As a fresh university graduate with a degree in Web Development and Design, I am enthusiastic about merging creativity with technology to produce impactful web solutions...</p>
       </section>
 
       <section>
-        <h2>REFERENCE</h2>
-        <p><strong>Aidan Valiyeva</strong> – CTO, Wonder Inc. – aiityv@email.com</p>
-        <p><strong>Oguz Seidov</strong> – CEO, Wonder Inc. – oguz@email.com</p>
+        <h2 onclick="toggleSection('work-list')">WORK EXPERIENCE</h2>
+        <div class="section" id="work-list">
+          <div class="job">
+            <h4>Intern - Web Design Assistant – DESIGNER & Specialist <span>2025 – Present</span></h4>
+            <ul>
+              <li>Created mockups and prototypes for various projects.</li>
+              <li>Collaborated with senior designers to optimize website layouts.</li>
+              <li>Worked on SEO principles to improve rankings.</li>
+            </ul>
+          </div>
+          <div class="job">
+            <h4>Azercell – Freelance Web Designer <span>2026 – 2027</span></h4>
+            <ul>
+              <li>Designed responsive websites for local businesses.</li>
+              <li>Integrated e-commerce platforms and optimized for mobile.</li>
+            </ul>
+          </div>
+        </div>
+        <button onclick="addDropdown('work-list', 'Work')">Add Work</button>
+      </section>
+
+      <section>
+        <h2 onclick="toggleSection('reference-list')">REFERENCE</h2>
+        <div class="section" id="reference-list">
+          <p><strong>Aidan Valiyeva</strong> – CTO, Wonder Inc. – aiityv@email.com</p>
+          <p><strong>Oguz Seidov</strong> – CEO, Wonder Inc. – oguz@email.com</p>
+        </div>
       </section>
     </main>
   </div>
 
   <script>
-    // Function to toggle the collapsible sections
-    var collapsibles = document.getElementsByClassName("collapsible");
-    for (var i = 0; i < collapsibles.length; i++) {
-      collapsibles[i].addEventListener("click", function() {
-        this.classList.toggle("active");
-        var content = this.nextElementSibling;
-        if (content.style.display === "block") {
-          content.style.display = "none";
-        } else {
-          content.style.display = "block";
-        }
-      });
+    function toggleSection(id) {
+      const section = document.getElementById(id);
+      section.style.display = section.style.display === "none" ? "block" : "none";
     }
 
-    // Function to dynamically add new fields (Education, Skill, Work)
     function addDropdown(id, type) {
       const container = document.getElementById(id);
       const div = document.createElement('div');
       div.className = 'new-entry';
-      div.innerHTML = `  
+      div.innerHTML = `
         <input type="text" placeholder="Enter ${type}..." />
         <button onclick="this.parentElement.remove()">Remove</button>
       `;
@@ -200,4 +178,5 @@
   </script>
 </body>
 </html>
+
 
